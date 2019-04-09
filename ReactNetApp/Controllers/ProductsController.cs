@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using ReactNetApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,11 +12,16 @@ namespace ReactNetApp.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
+        protected StoreContext dbContext;
+        public ProductsController(StoreContext context)
+        {
+            dbContext = context;
+        }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Json(dbContext.Products.ToArray());
         }
 
         // GET api/<controller>/5
