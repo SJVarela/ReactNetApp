@@ -19,16 +19,24 @@ namespace ReactNetApp.Controllers
         }
         // GET: api/<controller>
         [HttpGet]
-        public IActionResult Get()
+        public IEnumerable<Product> Get()
         {
-            return Json(dbContext.Products.ToArray());
+            return dbContext.Products.ToArray();
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(long id)
         {
-            return "value";
+            var result = dbContext.Products.Find(id);
+            if(result == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return new ObjectResult(result);
+            }
         }
 
         // POST api/<controller>
