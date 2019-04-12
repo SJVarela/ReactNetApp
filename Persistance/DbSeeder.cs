@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Persistance
 {
-    class DbSeeder
+    public class DbSeeder
     {
     }
 }

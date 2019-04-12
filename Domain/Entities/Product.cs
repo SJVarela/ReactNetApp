@@ -16,7 +16,7 @@ namespace Domain.Entities
         public int? CategoryId { get; set; }
         public decimal? UnitPrice { get; set; }
         public short? UnitsInStock { get; set; }
-        public byte?[] Picture { get; set; }
+        public byte[] Picture { get; set; }
 
 
         public Category Category { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Persistance.Configurations;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Persistance
 {
-    public class PersonalStoreDbContext: DbContext
+    public class PersonalStoreDbContext : DbContext
     {
         public PersonalStoreDbContext(DbContextOptions<PersonalStoreDbContext> options) : base(options)
         {
