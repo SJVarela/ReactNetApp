@@ -1,3 +1,4 @@
+using Application.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,10 +25,15 @@ namespace ReactNetApp
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //DbContext configuration
             services.AddDbContext<PersonalStoreDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             });
+
+            //Data services configurations
+            services.AddTransient<IProductsService, ProductsService>();
+
             // In production, the React files will be served from this directory
             //services.AddSpaStaticFiles(configuration =>
             //{
