@@ -17,7 +17,8 @@ namespace Persistance
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder
-                .ApplyConfiguration(new ProductConfiguration());
+                .ApplyConfiguration(new ProductConfiguration())
+                .ApplyConfiguration(new CategoryConfiguration());
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
